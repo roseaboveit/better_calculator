@@ -9,13 +9,31 @@ end
 
 calc = Calculator.new
 
-get '/:operation/:first_number/:second_number' do
-  operation = params[:operation]
+get '/add/:first_number/:second_number' do
   first_number = params[:first_number].to_i
   second_number = params[:second_number].to_i
-  if operation == "add"
-    calc.add(first_number,second_number).to_s
-  elsif operation == "subtract"
-    calc.subtract(first_number, second_number).to_s
-  end
+  calc.add(first_number,second_number).to_s
+end
+
+get '/subtract/:first_number/:second_number' do 
+  first_number = params[:first_number].to_i
+  second_number = params[:second_number].to_i
+  calc.subtract(first_number, second_number).to_s 
+end
+
+get '/multiply/:first_number/:second_number' do 
+  first_number = params[:first_number].to_i
+  second_number = params[:second_number].to_i
+  calc.multiply(first_number, second_number).to_s
+end
+
+get '/divide/:first_number/:second_number' do
+  first_number = params[:first_number].to_i
+  second_number = params[:second_number].to_i
+  calc.divide(first_number, second_number).to_s
+end
+
+get '/squareroot/:first_number' do
+  first_number = params[:first_number].to_i
+  calc.square_root(first_number).to_s
 end
